@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="user_name">user Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="password_short">Password is too short</string>
+    <string name="email_err">Invalid email</string>
+    <string name="pass_conf_err">Password doesn\'t match</string>
+    <string name="user_name_empty_error">Provide a user Name</string>
+    <string name="password_empty">Password is empty</string>
+</resources>

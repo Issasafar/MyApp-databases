@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.issasafar.myapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.issasafar.myapp"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures{
+        viewBinding true
+    }
+
+    flavorDimensions 'database'
+    productFlavors{
+        sqlitef{
+            dimension 'database'
+            applicationId 'com.issasafar.myapp.sqlitef'
+
+            manifestPlaceholders=[appLable: "Sqlite"]
+        }
+        mysqlf{
+            dimension 'database'
+            applicationId 'com.issasafar.myapp.mysqlf'
+            manifestPlaceholders=[appLable: "Mysql"]
+
+        }
+        firedb{
+            dimension 'database'
+            applicationId 'com.issasafar.myapp.firedb'
+            manifestPlaceholders=[appLable: "FireBase"]
+
+        }
+
+
+
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+    }
+}
+
+dependencies {
+    firedbImplementation platform('com.google.firebase:firebase-bom:32.0.0')
+    firedbImplementation 'com.google.firebase:firebase-auth'
+    firedbImplementation 'com.google.firebase:firebase-database:20.2.1'
+    firedbImplementation 'com.google.firebase:firebase-analytics:21.2.2'
+    mysqlfImplementation fileTree(dir: 'libs',include: ['*jar'])
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
